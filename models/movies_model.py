@@ -41,7 +41,7 @@ class MoviesModel(ModelPipe):
         return qa_list
 
     def read_dataset(self):
-        movies_data_path = './datasets/The-Movies-Dataset/title_with_cast.csv'
+        movies_data_path = '/interrogate-llm-dataset/datasets/The-Movies-Dataset/title_with_cast.csv'
         movies_data = pd.read_csv(movies_data_path).dropna()
 
         return movies_data
