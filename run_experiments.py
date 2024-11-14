@@ -9,7 +9,7 @@ from models.world_model import WorldModel
 from language_models import GPT3, GPTEmbedding, SBert, LLamaV2, Falcon
 
 
-def run_exp(dataset_name, answer_model_name='gpt', embedding_model_name='ada002', iterations=1):
+def run_exp(dataset_name, answer_model_name='gpt', embedding_model_name='ada002', iterations=5):
     """ run intterogation experiment with the given parameters
 
     Args:
