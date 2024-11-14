@@ -15,7 +15,7 @@ from transformers import AutoTokenizer, AutoModelForCausalLM, GenerationConfig
 class GPT3:
     """Class for interacting with the OpenAI API."""
     def __init__(self):
-        self.model_name = 'davinci-002'
+        self.model_name = 'gpt-3.5-turbo'
         self.client = openai.OpenAI(
             api_key="OPENAI_API_KEY",
             base_url="https://cmu.litellm.ai",
@@ -34,12 +34,15 @@ class GPT3:
                                                     n=n
                                                     )
                 break
-
+            # except openai.RateLimitError as e:
+            #     time.sleep(30)
+            # except openai.InternalServerError as e:
+            #     time.sleep(30)
             except Exception as anything:
                 if anything.args[0] == 'string indices must be integers' or 'The response was filtered' in anything.args[0]:
                     return {'choices': [{'text': ''}]}
 
-                time.sleep(1)
+                time.sleep(30)
                 error_counter += 1
                 if error_counter > 10:
                     raise anything
