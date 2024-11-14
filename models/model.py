@@ -101,7 +101,7 @@ class ModelPipe:
 
 
     def reconstruct_question(self, predicted_answer, inverse_prompt_prefix , temperatures):
-        answer_question_instructions = 'Follow he format below, and please only predict the question that corresponds to the last answer.\n\n'
+        answer_question_instructions = 'Follow the format below, and please only predict the question that corresponds to the last answer.\n\n'
         answer_question_prompt = answer_question_instructions + inverse_prompt_prefix + 'Answer: ' + predicted_answer + '\n' + 'Question: '
         
         res = reconstruct_pool(self.reconstruction_models, answer_question_prompt, temperatures)
@@ -142,7 +142,7 @@ class ModelPipe:
                 continue
             
             index += 1
-            print("Index Number":index)
+            print("Index Number: ", index)
             # add few shot prefix to the question to create the prompt
             prompt = prompt_prefix + 'Question: ' + question + '\n' + 'Answer: '
             # submit the prompt to the model
